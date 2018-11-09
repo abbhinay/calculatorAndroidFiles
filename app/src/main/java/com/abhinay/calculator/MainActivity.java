@@ -28,16 +28,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void result(View v){
         Log.d("calculator", "result");
-        doTheMath(Double.parseDouble(number1), Double.parseDouble(number2), operation);
+        String Ret = doTheMath(Double.parseDouble(number1), Double.parseDouble(number2), operation);
+        number1 = Ret;
+        number2 = "";
+        manager = 2;
     }
     public void memory(View v){
-        if(answer == 0){
-            Toast.makeText(this, "wrong operation",
-                    Toast.LENGTH_LONG).show();
-        }else{
-            number1 = String.valueOf(answer);
-            manager = 2;
-            number2 = "";
+        if(number1 != ""){
+            double no = 1;
+            for(int i=Integer.parseInt(number1); i > 0 ; i--){
+                no = no*i;
+            }
+            number1 = Double.toString(no);
+            monitorView.setText(number1 + operation + number2);
         }
     }
     public void leftBracket(View v){
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     public void divide(View v){
         Log.d("calculator", "divide");
         manager = 2;
-        operation = "%";
+        operation = "/";
         monitorView.setText(number1 + operation + number2);
     }
     public void multiply(View v){
@@ -194,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
         monitorView.setText(number1 + operation + number2);
     }
 
-    public void doTheMath(double num1, double num2, String op){
+    public String doTheMath(double num1, double num2, String op){
         if(op.equals("+")){
             answer = num1 + num2;
             Log.d("calculator", "(String) answer");
@@ -205,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
         else if(op.equals("*")){
             answer = num1 * num2;
         }
-        else if(op.equals("%")){
+        else if(op.equals("/")){
             answer = num1/num2;
         }
         else if(op.equals("^")){
@@ -215,5 +218,6 @@ public class MainActivity extends AppCompatActivity {
             answer = num1 * Math.sqrt(num2);
         }
         resultView.setText(Double.toString(answer));
+        return Double.toString(answer);
     }
 }

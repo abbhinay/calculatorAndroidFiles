@@ -4,7 +4,7 @@
     <string name="leftBracket">(</string>
     <string name="cancelText">C</string>
     <string name="leftBracketText">^</string>
-    <string name="rightBracketText">Mem</string>
+    <string name="rightBracketText">x!</string>
     <string name="backspaceText">⌫</string>
     <string name="sevenText">7</string>
     <string name="eightText">8</string>
