@@ -5,17 +5,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView monitorView;
-    TextView resultView;
-    String number1 = "";
-    String number2 = "";
-    int manager = 1;
-    String operation = "";
-    double answer = 0;
+    private TextView monitorView;
+    private TextView resultView;
+    private String number1 = "";
+    private String number2 = "";
+    private int manager = 1;
+    private String operation = "";
+    private double answer = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         manager = 2;
     }
     public void memory(View v){
-        if(number1 != ""){
+        if(!number1.equals("")){
             double no = 1;
             for(int i=Integer.parseInt(number1); i > 0 ; i--){
                 no = no*i;
@@ -54,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         number2 = "";
         operation = "";
         manager = 1;
-        double answer = 0;
         monitorView.setText(number1 + operation + number2);
         resultView.setText("");
     }
@@ -187,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         }
         monitorView.setText(number1 + operation + number2);
     }
-    public void Zero(View v){
+    public void zero(View v){
         Log.d("calculator", "0");
         if(manager == 1){
             number1 = number1 + "0";
@@ -198,23 +196,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String doTheMath(double num1, double num2, String op){
-        if(op.equals("+")){
+        if("+".equals(op)){
             answer = num1 + num2;
             Log.d("calculator", "(String) answer");
         }
-        else if(op.equals("-")){
+        else if("-".equals(op)){
             answer = num1 - num2;
         }
-        else if(op.equals("*")){
+        else if("*".equals(op)){
             answer = num1 * num2;
         }
-        else if(op.equals("/")){
+        else if("/".equals(op)){
             answer = num1/num2;
         }
-        else if(op.equals("^")){
+        else if("^".equals(op)){
             answer = Math.pow(num1, num2);
         }
-        else if(op.equals("√")){
+        else if("√".equals(op)){
             answer = num1 * Math.sqrt(num2);
         }
         resultView.setText(Double.toString(answer));

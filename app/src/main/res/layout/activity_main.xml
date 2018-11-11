@@ -367,7 +367,7 @@
             android:layout_weight="1"
             android:background="@drawable/mynumberbutton"
             android:fontFamily="serif"
-            android:onClick="Zero"
+            android:onClick="zero"
             android:text="@string/zeroText"
             android:textAlignment="center"
             android:textSize="36sp"
